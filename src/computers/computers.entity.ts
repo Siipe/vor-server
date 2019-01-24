@@ -1,8 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import md5 = require("md5");
+import { AbstractEntity } from "src/shared/entity/AbstractEntity";
 
 @Entity({name: 'computer'})
-export class Computer {
+export class Computer extends AbstractEntity {
   @PrimaryGeneratedColumn({name: 'computer_id'})
   id: number;
 
@@ -23,10 +24,6 @@ export class Computer {
 
   @Column()
   online: boolean;
-
-  constructor(partial?: Partial<Computer>) {
-    partial && Object.assign(this, partial);
-  }
 
   generateKey() {
     let str = this.name || Math.random().toString(36).substring(7);
