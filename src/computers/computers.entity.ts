@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import md5 = require("md5");
 import { AbstractEntity } from "src/shared/entity/AbstractEntity";
+import { Md5 } from "ts-md5";
 
 @Entity({name: 'computer'})
 export class Computer extends AbstractEntity {
@@ -27,6 +27,6 @@ export class Computer extends AbstractEntity {
 
   generateKey() {
     let str = this.name || Math.random().toString(36).substring(7);
-    return this.security_key = md5(str);
+    return this.security_key = Md5.hashStr(str).toString();
   }
 }
