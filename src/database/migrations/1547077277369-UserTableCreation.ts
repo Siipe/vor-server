@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class UserTableCreation1547077277369 implements MigrationInterface {
 
@@ -11,18 +11,18 @@ export class UserTableCreation1547077277369 implements MigrationInterface {
           type: 'int',
           isPrimary: true,
           isGenerated: true,
-          generationStrategy: 'increment'
+          generationStrategy: 'increment',
         },
         {
           name: 'name',
           type: 'varchar',
-          length: '100'
+          length: '100',
         },
         {
           name: 'login',
           type: 'varchar',
           length: '50',
-          isUnique: true
+          isUnique: true,
         },
         {
           name: 'password',
@@ -32,13 +32,13 @@ export class UserTableCreation1547077277369 implements MigrationInterface {
         {
           name: 'date_creation',
           type: 'timestamp',
-          default: 'CURRENT_TIMESTAMP'
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'creator_id',
           type: 'int',
-          isNullable: true
-        }
+          isNullable: true,
+        },
       ],
       foreignKeys: [
         {
@@ -46,14 +46,13 @@ export class UserTableCreation1547077277369 implements MigrationInterface {
           referencedColumnNames: ['user_id'],
           referencedTableName: 'user',
           onDelete: 'restrict',
-          onUpdate: 'cascade'
-        }
-      ]
+          onUpdate: 'cascade',
+        },
+      ],
     }), true);
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.dropTable('user');
   }
-
 }

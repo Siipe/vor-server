@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class ActionTableCreation1547425594146 implements MigrationInterface {
 
@@ -12,28 +12,28 @@ export class ActionTableCreation1547425594146 implements MigrationInterface {
             type: 'int',
             isPrimary: true,
             isGenerated: true,
-            generationStrategy: 'increment'
+            generationStrategy: 'increment',
           },
           {
             name: 'name',
             type: 'varchar',
             length: '100',
-            isUnique: true
+            isUnique: true,
           },
           {
             name: 'description',
             type: 'text',
-            isNullable: true
+            isNullable: true,
           },
           {
             name: 'alias',
             type: 'varchar',
-            length: '50'
+            length: '50',
           },
           {
             name: 'permanent',
             type: 'boolean',
-            default: true
+            default: true,
           },
           {
             name: 'type',
@@ -43,11 +43,11 @@ export class ActionTableCreation1547425594146 implements MigrationInterface {
           {
             name: 'date_creation',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP'
+            default: 'CURRENT_TIMESTAMP',
           },
           {
             name: 'creator_id',
-            type: 'int'
+            type: 'int',
           }
         ],
         foreignKeys: [
@@ -56,15 +56,14 @@ export class ActionTableCreation1547425594146 implements MigrationInterface {
             referencedColumnNames: ['creator_id'],
             referencedTableName: 'user',
             onDelete: 'restrict',
-            onUpdate: 'cascade'
-          }
-        ]
-      }
+            onUpdate: 'cascade',
+          },
+        ],
+      },
     ), true);
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.dropTable('action');
   }
-
 }

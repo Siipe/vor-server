@@ -1,5 +1,5 @@
-import { Type, plainToClass } from "class-transformer";
-import "reflect-metadata";
+import { Type, plainToClass } from 'class-transformer';
+import 'reflect-metadata';
 
 class Album {
   id: number;
@@ -14,21 +14,21 @@ class Photo {
   filename: string;
 }
 
-let albumJson = {
+const albumJson = {
   id: 4,
   name: 'my album',
   photos: [
     {
       id: 1,
-      filename: 'photo1'
+      filename: 'photo1',
     },
     {
       id: 2,
-      filename: 'photo2'
+      filename: 'photo2',
     },
   ]
 };
 
-let album = plainToClass(Album, albumJson);
+const album = plainToClass(Album, albumJson);
 
 console.log(album instanceof Album, album);

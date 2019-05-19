@@ -1,22 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { AbstractEntity } from "src/shared/entity/AbstractEntity";
-import { Md5 } from "ts-md5";
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Md5 } from 'ts-md5';
+import AbstractEntity from '../shared/entity/AbstractEntity';
 
-@Entity({name: 'computer'})
+@Entity({ name: 'computer' })
 export class Computer extends AbstractEntity {
-  @PrimaryGeneratedColumn({name: 'computer_id'})
+  @PrimaryGeneratedColumn({ name: 'computer_id' })
   id: number;
 
-  @Column({length: 100})
+  @Column({ length: 100 })
   name: string;
 
-  @Column({length: 100})
+  @Column({ length: 100 })
   os: string;
 
   @Column()
   description: string;
 
-  @Column({length: 32})
+  @Column({ length: 32 })
   security_key: string;
 
   @Column()

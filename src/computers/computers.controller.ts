@@ -1,6 +1,6 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UsePipes, ValidationPipe } from "@nestjs/common";
-import { ComputersDto } from "./computers.dto";
-import { ComputersService } from "./computers.service";
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { ComputersDto } from './computers.dto';
+import { ComputersService } from './computers.service';
 
 @Controller('/computers')
 export class ComputersController {
@@ -8,13 +8,13 @@ export class ComputersController {
 
   @Get()
   async listAll() {
-    let computers = await this.computersService.listAll();
+    const computers = await this.computersService.listAll();
     return computers;
   }
 
   @Get(':id')
   async findOne(@Param('id') id: number) {
-    let computer = await this.computersService.findOne(id);
+    const computer = await this.computersService.findOne(id);
     if (!computer) {
       throw new HttpException(`The requested resource [${id}] wasn't found.`, HttpStatus.NOT_FOUND);
     }
@@ -23,7 +23,7 @@ export class ComputersController {
   }
 
   @Post()
-  @UsePipes(new ValidationPipe({transform: true}))
+  @UsePipes(new ValidationPipe({ transform: true }))
   async create(@Body() body: ComputersDto) {
     if (!body) {
       throw new HttpException('You must specify an object!', HttpStatus.BAD_REQUEST);

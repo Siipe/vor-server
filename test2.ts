@@ -1,6 +1,6 @@
-import "reflect-metadata";
-import { Type, plainToClass, classToPlain, Exclude } from "class-transformer";
-import { Md5 } from "ts-md5";
+import 'reflect-metadata';
+import { Type, plainToClass, classToPlain, Exclude } from 'class-transformer';
+import { Md5 } from 'ts-md5';
 
 class User {
   id: number;

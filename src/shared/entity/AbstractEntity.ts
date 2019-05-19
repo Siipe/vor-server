@@ -1,4 +1,4 @@
-export abstract class AbstractEntity {
+export default abstract class AbstractEntity {
   constructor(partial?: Partial<AbstractEntity>) {
     partial && Object.assign(this, partial);
   }
