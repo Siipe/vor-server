@@ -7,9 +7,8 @@ export class ComputersController {
   constructor(private readonly computersService: ComputersService) { }
 
   @Get()
-  async listAll() {
-    const computers = await this.computersService.listAll();
-    return computers;
+  listAll() {
+    return this.computersService.listAll();
   }
 
   @Get(':id')
@@ -18,18 +17,17 @@ export class ComputersController {
     if (!computer) {
       throw new HttpException(`The requested resource [${id}] wasn't found.`, HttpStatus.NOT_FOUND);
     }
-
     return computer;
   }
 
   @Post()
   @UsePipes(new ValidationPipe({ transform: true }))
-  async create(@Body() body: ComputersDto) {
+  create(@Body() body: ComputersDto) {
     if (!body) {
       throw new HttpException('You must specify an object!', HttpStatus.BAD_REQUEST);
     }
     try {
-      return await this.computersService.create(body);
+      return this.computersService.create(body);
     } catch (err) {
       throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR);
     }

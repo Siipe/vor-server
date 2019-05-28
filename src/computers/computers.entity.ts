@@ -16,17 +16,17 @@ export class Computer extends AbstractEntity {
   @Column()
   description: string;
 
-  @Column({ length: 32 })
-  security_key: string;
+  @Column({ name: 'security_key', length: 32 })
+  securityKey: string;
 
-  @Column()
-  date_creation: Date;
+  @Column({ name: 'date_creation' })
+  dateCreation: Date;
 
   @Column()
   online: boolean;
 
   generateKey() {
-    let str = this.name || Math.random().toString(36).substring(7);
-    return this.security_key = Md5.hashStr(str).toString();
+    const str = this.name || Math.random().toString(36).substring(7);
+    return this.securityKey = Md5.hashStr(str).toString();
   }
 }

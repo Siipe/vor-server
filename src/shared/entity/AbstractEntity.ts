@@ -1,5 +1,8 @@
+import * as _ from 'lodash';
 export default abstract class AbstractEntity {
   constructor(partial?: Partial<AbstractEntity>) {
-    partial && Object.assign(this, partial);
+    if (partial) {
+      _.assignIn(this, partial);
+    }
   }
 }
